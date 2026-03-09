@@ -1,9 +1,6 @@
-// script.js - O CÓDIGO MAIS INCRÍVEL QUE VOCÊ VAI VER NA ESCOLA
-
-// ====================== PARTICLES BACKGROUND (efeito neon profissional) ======================
+// script.js
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
-
 let particlesArray = [];
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -35,9 +32,7 @@ class Particle {
 
 function initParticles() {
     particlesArray = [];
-    for (let i = 0; i < 120; i++) {
-        particlesArray.push(new Particle());
-    }
+    for (let i = 0; i < 120; i++) particlesArray.push(new Particle());
 }
 
 function animateParticles() {
@@ -55,23 +50,19 @@ window.addEventListener('resize', () => {
     initParticles();
 });
 
-// ====================== MENU + PROGRESS BAR ======================
+// MENU + PROGRESS
 const hamburger = document.getElementById('hamburger');
 const navMobile = document.getElementById('nav-mobile');
 const progress = document.getElementById('progress');
 
 hamburger.addEventListener('click', () => {
     navMobile.classList.toggle('active');
-    hamburger.classList.toggle('open');
 });
 
-// Scroll suave + progress bar
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
         e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
         if (navMobile.classList.contains('active')) hamburger.click();
     });
 });
@@ -83,7 +74,7 @@ window.addEventListener('scroll', () => {
     progress.style.width = `${scrollPercent}%`;
 });
 
-// ====================== REVELAR SEGREDOS ======================
+// REVELAR SEGREDOS
 function revelarSegredo(num) {
     const el = document.getElementById(`segredo-${num}`);
     if (el) {
@@ -98,14 +89,12 @@ function revelarSegredo(num) {
     }
 }
 
-// ====================== GOLPE FINAL (efeito 3D) ======================
+// GOLPE FINAL
 function golpeFinal() {
     const sword = document.getElementById('sword');
-    
     sword.style.transition = 'transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
     sword.style.transform = 'rotate(-120deg) scale(1.8)';
     
-    // Efeito de impacto na tela
     document.body.style.transition = 'filter 80ms';
     document.body.style.filter = 'brightness(2.5) saturate(2)';
     
@@ -119,10 +108,9 @@ function golpeFinal() {
     }, 700);
 }
 
-// ====================== CONFETTI FINAL (o mais incrível) ======================
+// CONFETTI + FINAL
 function launchConfetti() {
-    const colors = ['#ff1e56', '#c026d3', '#ffffff', '#a855f7'];
-    
+    const colors = ['#ff1e56', '#c026d3', '#ffffff'];
     for (let i = 0; i < 180; i++) {
         setTimeout(() => {
             const confetti = document.createElement('div');
@@ -136,59 +124,38 @@ function launchConfetti() {
             document.body.appendChild(confetti);
             
             const duration = Math.random() * 4000 + 3000;
-            const angle = Math.random() * 80 - 40;
-            
             confetti.animate([
                 { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                { transform: `translateY(${window.innerHeight + 100}px) rotate(${angle * 8}deg)`, opacity: 0 }
-            ], {
-                duration: duration,
-                easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
-            });
+                { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random()*80 - 40}deg)`, opacity: 0 }
+            ], { duration, easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)' });
             
             setTimeout(() => confetti.remove(), duration);
         }, i * 2);
     }
 }
 
-// ====================== FINAL DA LENDA ======================
 function finalizarLenda() {
     const msg = document.getElementById('mensagem-final');
-    msg.innerHTML = `
-        <strong>PARABÉNS!</strong><br>
-        Você completou <span style="color:#ff1e56">A Lenda do Cavaleiro das Sombras</span>.<br>
-        Agora vá e crie sua própria história! 🚀
-    `;
+    msg.innerHTML = `<strong>PARABÉNS!</strong><br>Você completou <span style="color:#ff1e56">A Lenda do Cavaleiro das Sombras</span>.<br>Agora vá e crie sua própria história! 🚀`;
     msg.style.opacity = '1';
-    
     launchConfetti();
-    
-    // Scroll automático para o final
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
-// ====================== INICIAR JORNADA ======================
 function iniciarJornada() {
-    document.getElementById('secao2').scrollIntoView({
-        behavior: 'smooth'
-    });
+    document.getElementById('secao2').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ====================== INICIALIZAÇÃO ======================
+// INICIALIZAÇÃO
 window.onload = () => {
     initParticles();
     animateParticles();
     
-    // Animação de entrada do hero
     document.querySelector('.hero-content').style.opacity = '0';
     setTimeout(() => {
         document.querySelector('.hero-content').style.transition = 'all 1.8s cubic-bezier(0.23,1,0.32,1)';
         document.querySelector('.hero-content').style.opacity = '1';
     }, 400);
     
-    console.log('%c🌌 SHADOWFORGE carregado com sucesso! Você agora tem o site mais moderno da escola.', 
-                'color:#c026d3; font-size:16px; font-weight:bold');
+    console.log('%c✅ Site completo e corrigido! Botões lindos, menu legível e pronto para entregar!', 'color:#c026d3; font-size:18px; font-weight:bold');
 };
