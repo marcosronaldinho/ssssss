@@ -1,10 +1,9 @@
-/* styles.css - TOTALMENTE MODERNO 2026 */
 :root {
     --preto: #0a0a0a;
     --vermelho: #ff1e56;
     --roxo: #c026d3;
-    --roxo-escuro: #4c1d95;
-    --texto: #f1f1f1;
+    --texto-branco: #ffffff;
+    --texto-claro: #f0e6ff;
     --glass: rgba(255,255,255,0.06);
 }
 
@@ -13,12 +12,12 @@
 body {
     font-family: 'Inter', system_ui, sans-serif;
     background: var(--preto);
-    color: var(--texto);
+    color: var(--texto-claro);
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* ====================== CANVAS PARTICLES ====================== */
+/* PARTICLES */
 #particles {
     position: fixed;
     top: 0; left: 0;
@@ -27,15 +26,15 @@ body {
     pointer-events: none;
 }
 
-/* ====================== HEADER ====================== */
+/* HEADER */
 .header {
     position: fixed;
     top: 0; left: 0;
     width: 100%;
-    background: rgba(10,10,10,0.85);
+    background: rgba(10,10,10,0.92);
     backdrop-filter: blur(20px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(192, 38, 211, 0.2);
+    border-bottom: 1px solid rgba(192, 38, 211, 0.3);
 }
 
 .header-container {
@@ -53,14 +52,10 @@ body {
     gap: 12px;
     font-size: 1.85rem;
     font-weight: 700;
-    letter-spacing: -1px;
     color: white;
 }
 
-.logo-icon {
-    font-size: 2.2rem;
-    animation: spin 8s linear infinite;
-}
+.logo-icon { font-size: 2.2rem; animation: spin 8s linear infinite; }
 
 .nav-list {
     display: flex;
@@ -69,28 +64,21 @@ body {
 }
 
 .nav-list a {
-    color: white;
+    color: var(--texto-branco) !important;
+    font-weight: 600;
+    font-size: 1.05rem;
     text-decoration: none;
-    font-weight: 500;
-    position: relative;
+    text-shadow: 0 0 12px rgba(192, 38, 211, 0.5);
     transition: all 0.3s ease;
 }
 
-.nav-list a:after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, var(--vermelho), var(--roxo));
-    transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+.nav-list a:hover {
+    color: var(--vermelho) !important;
+    text-shadow: 0 0 20px var(--vermelho);
+    transform: translateY(-2px);
 }
 
-.nav-list a:hover:after { width: 100%; }
-.nav-list a:hover { color: var(--roxo); }
-
-/* Hamburger + Progress */
+/* HAMBURGUER + PROGRESS */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -122,7 +110,43 @@ body {
     transition: width 0.1s linear;
 }
 
-/* ====================== HERO ====================== */
+/* MENU MOBILE */
+.nav-mobile {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(10,10,10,0.98);
+    padding: 2rem 5%;
+    border-top: 1px solid rgba(192,38,211,0.2);
+}
+
+.nav-mobile.active {
+    display: block;
+    animation: slideDown 0.4s ease;
+}
+
+.nav-list-mobile {
+    list-style: none;
+}
+
+.nav-list-mobile a {
+    display: block;
+    padding: 1.4rem 0;
+    color: var(--texto-branco);
+    font-size: 1.4rem;
+    text-decoration: none;
+    text-shadow: 0 0 10px rgba(192,38,211,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-list-mobile a:hover {
+    color: var(--roxo);
+    padding-left: 15px;
+}
+
+/* HERO */
 .hero {
     height: 100vh;
     display: flex;
@@ -138,7 +162,6 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(transparent, rgba(10,10,10,0.7));
-    z-index: 1;
 }
 
 .hero-content {
@@ -156,7 +179,6 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    letter-spacing: 1px;
 }
 
 .hero-title {
@@ -168,7 +190,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
-    text-shadow: 0 0 80px rgba(192,38,211,0.6);
 }
 
 .hero-subtitle {
@@ -184,36 +205,38 @@ body {
     flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
-    padding: 16px 42px;
-    border-radius: 9999px;
-    font-weight: 600;
-    font-size: 1.1rem;
+.btn-primary, .btn-secondary, .btn-reveal, .btn-final {
+    padding: 18px 44px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    border: none;
+    box-shadow: 0 12px 35px -10px rgba(192,38,211,0.5);
+    text-transform: uppercase;
 }
 
 .btn-primary {
     background: linear-gradient(90deg, var(--vermelho), var(--roxo));
     color: white;
-    box-shadow: 0 10px 40px -10px var(--roxo);
+    border: none;
 }
 
 .btn-primary:hover {
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 0 20px 60px -10px var(--roxo);
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 20px 50px -10px var(--roxo);
 }
 
 .btn-secondary {
     background: transparent;
-    border: 2px solid var(--roxo);
+    border: 2.5px solid var(--roxo);
     color: white;
 }
 
 .btn-secondary:hover {
     background: var(--roxo);
-    color: white;
+    transform: scale(1.05);
 }
 
 .hero-sword {
@@ -224,17 +247,15 @@ body {
     opacity: 0.15;
     transform: rotate(-25deg);
     animation: floatSword 6s ease-in-out infinite;
-    z-index: 2;
     filter: drop-shadow(0 0 60px var(--vermelho));
 }
 
-/* ====================== SEÇÕES GERAIS ====================== */
+/* SEÇÕES GERAIS */
 .section {
     min-height: 100vh;
     padding: 140px 5% 100px;
     display: flex;
     align-items: center;
-    position: relative;
 }
 
 .section-container {
@@ -261,6 +282,7 @@ body {
     font-size: 3rem;
     color: white;
     font-weight: 700;
+    text-shadow: 0 0 15px var(--roxo);
 }
 
 .content-card {
@@ -274,8 +296,9 @@ body {
 
 .lead {
     font-size: 1.35rem;
-    color: #ddd;
+    color: #f0e6ff;
     margin-bottom: 2rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
 .bullet-list {
@@ -287,6 +310,7 @@ body {
     padding: 14px 0 14px 40px;
     font-size: 1.25rem;
     position: relative;
+    color: #f0e6ff;
     transition: all 0.3s;
 }
 
@@ -305,32 +329,19 @@ body {
 
 .btn-reveal {
     background: transparent;
-    border: 2px solid var(--roxo);
-    color: white;
-    padding: 14px 36px;
-    border-radius: 9999px;
-    cursor: pointer;
-    font-weight: 600;
+    border: 2.5px solid var(--vermelho);
+    color: var(--texto-branco);
+    padding: 16px 40px;
+    font-size: 1.1rem;
 }
 
 .btn-reveal:hover {
-    background: var(--roxo);
-    transform: scale(1.05);
+    background: var(--vermelho);
+    color: white;
+    box-shadow: 0 15px 40px rgba(255,30,86,0.4);
 }
 
-/* Segredo revelado */
-.segredo {
-    margin-top: 1.5rem;
-    padding: 24px;
-    background: rgba(192,38,211,0.1);
-    border-left: 6px solid var(--roxo);
-    border-radius: 12px;
-    display: none;
-    font-style: italic;
-    animation: pop 0.6s ease;
-}
-
-/* ====================== SEÇÃO 5 - ESPADA ====================== */
+/* ESPADA */
 .sword-container {
     margin: 4rem auto;
     text-align: center;
@@ -355,24 +366,28 @@ body {
     letter-spacing: 2px;
 }
 
-/* ====================== FINAL ====================== */
-.final {
-    background: linear-gradient(180deg, #0a0a0a, #2a0055);
-}
-
+/* BOTÃO FINAL */
 .btn-final {
-    background: linear-gradient(90deg, #ff1e56, #c026d3);
+    background: linear-gradient(90deg, #ff1e56, #c026d3, #ff1e56);
+    background-size: 200% 100%;
     color: white;
-    padding: 22px 60px;
-    font-size: 1.4rem;
-    border-radius: 9999px;
-    box-shadow: 0 20px 50px rgba(192,38,211,0.5);
-    transition: all 0.4s;
+    font-size: 1.55rem;
+    padding: 24px 70px;
+    margin: 2rem auto;
+    display: block;
+    box-shadow: 0 20px 60px -10px #ff1e56;
+    animation: pulse 2.5s infinite alternate ease-in-out;
 }
 
 .btn-final:hover {
-    transform: scale(1.12);
-    box-shadow: 0 30px 70px rgba(255,30,86,0.6);
+    background-position: right center;
+    transform: scale(1.12) translateY(-6px);
+    box-shadow: 0 30px 80px -10px #c026d3;
+}
+
+@keyframes pulse {
+    from { box-shadow: 0 20px 60px -10px #ff1e56; }
+    to { box-shadow: 0 30px 90px -5px #c026d3; }
 }
 
 .mensagem-final {
@@ -380,9 +395,10 @@ body {
     font-size: 1.4rem;
     opacity: 0;
     transition: all 1s;
+    text-align: center;
 }
 
-/* ====================== FOOTER ====================== */
+/* FOOTER */
 .footer {
     text-align: center;
     padding: 3rem 5%;
@@ -391,26 +407,21 @@ body {
     color: #666;
 }
 
-/* ====================== RESPONSIVO ====================== */
+/* RESPONSIVO */
 @media (max-width: 768px) {
     .nav-desktop { display: none; }
     .hamburger { display: flex; }
-    
-    .hero-title { font-size: 3.8rem; }
     .section { padding: 110px 8% 80px; }
-    
-    .content-card {
-        padding: 2rem;
-    }
+    .content-card { padding: 2rem; }
 }
 
-/* ====================== ANIMAÇÕES ====================== */
+/* ANIMAÇÕES */
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes floatSword {
     0%, 100% { transform: translateY(0) rotate(-25deg); }
     50% { transform: translateY(-40px) rotate(-25deg); }
 }
-@keyframes pop {
-    from { opacity: 0; transform: scale(0.7); }
-    to { opacity: 1; transform: scale(1); }
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
