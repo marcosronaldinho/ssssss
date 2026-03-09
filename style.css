@@ -1,0 +1,329 @@
+/* styles.css */
+/* ====================== VARIÁVEIS DE CORES (fáceis de mudar) ====================== */
+:root {
+    --preto: #0F0F0F;
+    --vermelho: #FF2D55;
+    --roxo: #9B30FF;
+    --roxo-escuro: #4B0082;
+    --texto: #EAEAEA;
+}
+
+/* ====================== RESET E ESTILO GERAL ====================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--preto);
+    color: var(--texto);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ====================== HEADER - MENU TOPO ====================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--roxo);
+}
+
+.logo-icone {
+    animation: girar 4s linear infinite;
+}
+
+.nav-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .nav-desktop {
+        display: block;
+    }
+}
+
+.nav-list {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--vermelho);
+    transform: translateY(-3px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--vermelho), var(--roxo));
+    transition: width 0.4s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hambúrguer */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background: var(--roxo);
+    transition: all 0.3s;
+}
+
+.nav-mobile {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--preto);
+    padding: 2rem;
+}
+
+.nav-mobile.active {
+    display: block;
+    animation: slideDown 0.4s ease;
+}
+
+.nav-list-mobile {
+    list-style: none;
+}
+
+.nav-link-mobile {
+    display: block;
+    padding: 1rem;
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(155, 48, 255, 0.2);
+}
+
+/* ====================== SEÇÕES (cada uma como um "slide") ====================== */
+.section {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-content {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease forwards;
+}
+
+/* Animação de entrada (CSS) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Títulos e subtítulos (fidelidade aos slides) */
+.titulo-principal {
+    font-size: 3.5rem;
+    background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.subtitulo {
+    font-size: 1.8rem;
+    color: var(--roxo);
+    margin-bottom: 2rem;
+}
+
+.titulo-secao {
+    font-size: 2.8rem;
+    color: var(--roxo);
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo-secao {
+    font-size: 1.5rem;
+    color: var(--vermelho);
+    margin-bottom: 2rem;
+}
+
+/* Bullets points (exatamente como nos slides) */
+.bullets {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.bullets li {
+    padding: 12px 0;
+    font-size: 1.2rem;
+    position: relative;
+    padding-left: 35px;
+}
+
+.bullets li::before {
+    content: '⚡';
+    position: absolute;
+    left: 0;
+    color: var(--vermelho);
+}
+
+/* Botões interativos */
+.btn-interativo {
+    background: linear-gradient(45deg, var(--vermelho), var(--roxo));
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(155, 48, 255, 0.4);
+}
+
+.btn-interativo:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 45, 85, 0.5);
+}
+
+/* Mistérios escondidos */
+.mistério {
+    margin-top: 1.5rem;
+    padding: 20px;
+    background: rgba(155, 48, 255, 0.15);
+    border-left: 5px solid var(--roxo);
+    border-radius: 8px;
+    display: none;
+    animation: popIn 0.6s ease;
+}
+
+.mistério.mostrar {
+    display: block;
+}
+
+/* Seção Hero especial */
+.hero {
+    background: linear-gradient(135deg, var(--preto) 0%, #1a0033 100%);
+    text-align: center;
+}
+
+.hero-visual {
+    font-size: 12rem;
+    margin: 2rem 0;
+    filter: drop-shadow(0 0 60px var(--roxo));
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+/* Espada clicável (efeito JS) */
+.espada-container {
+    text-align: center;
+    margin: 3rem 0;
+    cursor: pointer;
+}
+
+.espada {
+    font-size: 6rem;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    display: inline-block;
+}
+
+.espada.ativo {
+    transform: rotate(-45deg) scale(1.4);
+    color: var(--vermelho);
+    filter: drop-shadow(0 0 40px var(--vermelho));
+}
+
+/* Seção final */
+.final {
+    background: linear-gradient(to bottom, #0F0F0F, #2A0055);
+    text-align: center;
+}
+
+.final-btn {
+    font-size: 1.4rem;
+    padding: 20px 50px;
+}
+
+/* ====================== RESPONSIVIDADE ====================== */
+@media (max-width: 767px) {
+    .titulo-principal {
+        font-size: 2.8rem;
+    }
+    .section {
+        padding: 100px 8% 60px;
+    }
+}
+
+/* ====================== ANIMAÇÕES ADICIONAIS ====================== */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Efeito de glow no hover dos títulos */
+.titulo-secao:hover {
+    text-shadow: 0 0 20px var(--roxo);
+}
