@@ -3,180 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Lenda do Cavaleiro das Sombras</title>
+    <meta name="description" content="A Lenda do Cavaleiro das Sombras - Apresentação interativa 2026">
+    <title>SHADOWFORGE • A Lenda do Cavaleiro das Sombras</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts (modern + elegante) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- HEADER - MENU NO TOPO (fixo e responsivo) -->
+
+    <!-- CANVAS DE PARTÍCULAS (fundo épico neon) -->
+    <canvas id="particles"></canvas>
+
+    <!-- HEADER - MENU ULTRA MODERNO -->
     <header class="header">
         <div class="header-container">
-            <!-- Logo -->
             <div class="logo">
-                <span class="logo-icone">🗡️</span>
-                <span class="logo-texto">Sombras</span>
+                <span class="logo-icon">⚔️</span>
+                <span class="logo-text">SHADOWFORGE</span>
             </div>
 
-            <!-- Menu desktop -->
             <nav class="nav-desktop">
                 <ul class="nav-list">
-                    <li><a href="#secao1" class="nav-link">Introdução</a></li>
-                    <li><a href="#secao2" class="nav-link">O Chamado</a></li>
-                    <li><a href="#secao3" class="nav-link">Os Desafios</a></li>
-                    <li><a href="#secao4" class="nav-link">A Aliança</a></li>
-                    <li><a href="#secao5" class="nav-link">O Confronto</a></li>
-                    <li><a href="#secao6" class="nav-link">O Legado</a></li>
+                    <li><a href="#secao1">Início</a></li>
+                    <li><a href="#secao2">O Chamado</a></li>
+                    <li><a href="#secao3">Desafios</a></li>
+                    <li><a href="#secao4">Aliança</a></li>
+                    <li><a href="#secao5">Confronto</a></li>
+                    <li><a href="#secao6">Legado</a></li>
                 </ul>
             </nav>
 
-            <!-- Botão hambúrguer (mobile) -->
-            <button id="hamburger" class="hamburger" aria-label="Abrir menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <button id="hamburger" class="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
 
-        <!-- Menu mobile -->
+        <!-- Menu mobile com glass effect -->
         <nav id="nav-mobile" class="nav-mobile">
-            <ul class="nav-list-mobile">
-                <li><a href="#secao1" class="nav-link-mobile">Introdução</a></li>
-                <li><a href="#secao2" class="nav-link-mobile">O Chamado</a></li>
-                <li><a href="#secao3" class="nav-link-mobile">Os Desafios</a></li>
-                <li><a href="#secao4" class="nav-link-mobile">A Aliança</a></li>
-                <li><a href="#secao5" class="nav-link-mobile">O Confronto</a></li>
-                <li><a href="#secao6" class="nav-link-mobile">O Legado</a></li>
-            </ul>
+            <ul></ul>
         </nav>
+
+        <!-- Progress bar de leitura -->
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
     </header>
 
-    <!-- SEÇÃO 1 - Slide 1: Introdução -->
-    <section id="secao1" class="section hero">
-        <div class="section-content">
-            <h1 class="titulo-principal">A Lenda do Cavaleiro das Sombras</h1>
-            <h2 class="subtitulo">Uma história de coragem, mistério e redenção</h2>
-            <p class="autor">Apresentado por: [SEU NOME] • 3º Ano do Ensino Médio</p>
+    <!-- HERO - SEÇÃO 1 -->
+    <section id="secao1" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="badge">3º Ano • Ensino Médio</div>
+            <h1 class="hero-title">A LENDA<br>DO CAVALEIRO<br>DAS SOMBRAS</h1>
+            <p class="hero-subtitle">Uma jornada de coragem, mistério e redenção</p>
             
-            <div class="hero-visual">
-                <div class="cavaleiro-icone">🛡️</div>
+            <div class="hero-buttons">
+                <button onclick="iniciarJornada()" class="btn-primary">
+                    INICIAR A LENDA
+                </button>
+                <button onclick="document.getElementById('secao2').scrollIntoView({behavior:'smooth'})" class="btn-secondary">
+                    Ver capítulos
+                </button>
             </div>
 
-            <ul class="bullets">
-                <li>Protagonista: Elara, a Cavaleira das Sombras</li>
-                <li>Reino: Eldoria, coberto por uma névoa eterna</li>
-                <li>Tema: A escuridão pode ser tanto inimiga quanto aliada</li>
-            </ul>
-
-            <button onclick="revelarMistério(1)" class="btn-interativo">
-                Começar a Jornada ✨
-            </button>
+            <div class="hero-stats">
+                <div>Protagonista: <span class="highlight">Elara</span></div>
+                <div>Reino: <span class="highlight">Eldoria</span></div>
+                <div>Tema: <span class="highlight">Luz na escuridão</span></div>
+            </div>
         </div>
+
+        <!-- Espada flutuante hero -->
+        <div class="hero-sword">🗡️</div>
     </section>
 
-    <!-- SEÇÃO 2 - Slide 2 -->
+    <!-- SEÇÃO 2 -->
     <section id="secao2" class="section">
-        <div class="section-content">
-            <h2 class="titulo-secao">Capítulo 1 • O Chamado</h2>
-            <h3 class="subtitulo-secao">A noite em que tudo mudou</h3>
-            <p>Elara vivia em um vilarejo esquecido. Uma noite, um grito ecoou das montanhas roxas...</p>
-            
-            <ul class="bullets">
-                <li>O rei desapareceu sem deixar rastros</li>
-                <li>Uma espada vermelha brilhava no céu</li>
-                <li>Elara ouviu uma voz sussurrando seu nome</li>
-            </ul>
-
-            <button onclick="revelarMistério(2)" class="btn-interativo">
-                Revelar o sussurro secreto
-            </button>
-            <div id="mistério-2" class="mistério escondido">
-                A voz dizia: "A sombra é sua aliada..."
+        <div class="section-container">
+            <div class="chapter-header">
+                <span class="chapter-number">01</span>
+                <h2>O CHAMADO</h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">A noite em que o destino despertou...</p>
+                <ul class="bullet-list">
+                    <li>O rei desaparece no vazio</li>
+                    <li>Uma espada vermelha corta o céu</li>
+                    <li>Uma voz sussurra o nome de Elara</li>
+                </ul>
+                <button onclick="revelarSegredo(2)" class="btn-reveal">Revelar o sussurro</button>
+                <div id="segredo-2" class="segredo"></div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 3 - Slide 3 -->
+    <!-- SEÇÃO 3 -->
     <section id="secao3" class="section">
-        <div class="section-content">
-            <h2 class="titulo-secao">Capítulo 2 • Os Desafios</h2>
-            <h3 class="subtitulo-secao">A floresta que engole luz</h3>
-            <p>Elara entrou na Floresta Negra. Cada passo trazia um novo perigo.</p>
-            
-            <ul class="bullets">
-                <li>Lobos com olhos vermelhos</li>
-                <li>Espinhos que sussurravam mentiras</li>
-                <li>Um rio de sombras que tentava puxá-la</li>
-            </ul>
-
-            <button onclick="revelarMistério(3)" class="btn-interativo">
-                Revelar o primeiro segredo
-            </button>
-        </div>
-    </section>
-
-    <!-- SEÇÃO 4 - Slide 4 -->
-    <section id="secao4" class="section">
-        <div class="section-content">
-            <h2 class="titulo-secao">Capítulo 3 • A Aliança</h2>
-            <h3 class="subtitulo-secao">Nem todos os monstros são inimigos</h3>
-            <p>No coração da floresta, Elara encontrou um ser inesperado...</p>
-            
-            <ul class="bullets">
-                <li>O Guardião das Sombras (um dragão roxo)</li>
-                <li>Ele ofereceu um pacto de poder</li>
-                <li>"Juntos, podemos salvar Eldoria"</li>
-            </ul>
-
-            <button onclick="revelarMistério(4)" class="btn-interativo">
-                Aceitar o pacto?
-            </button>
-        </div>
-    </section>
-
-    <!-- SEÇÃO 5 - Slide 5 -->
-    <section id="secao5" class="section">
-        <div class="section-content">
-            <h2 class="titulo-secao">Capítulo 4 • O Confronto</h2>
-            <h3 class="subtitulo-secao">A batalha final</h3>
-            <p>Diante do castelo negro, Elara enfrentou o verdadeiro vilão: o Rei das Trevas.</p>
-            
-            <ul class="bullets">
-                <li>A espada vermelha vs. a coroa sombria</li>
-                <li>Um golpe que mudou o destino</li>
-                <li>A sombra finalmente se tornou luz</li>
-            </ul>
-
-            <!-- EFEITO LEGAL: clique na espada para ativar animação -->
-            <div onclick="golpeFinal()" class="espada-container">
-                <div id="espada" class="espada">⚔️</div>
-                <p class="dica-espada">Clique na espada para sentir o golpe!</p>
+        <div class="section-container">
+            <div class="chapter-header">
+                <span class="chapter-number">02</span>
+                <h2>OS DESAFIOS</h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">A Floresta Negra não perdoa os fracos</p>
+                <ul class="bullet-list">
+                    <li>Lobos de olhos flamejantes</li>
+                    <li>Espinhos que contam mentiras</li>
+                    <li>Rio de sombras que puxa a alma</li>
+                </ul>
+                <button onclick="revelarSegredo(3)" class="btn-reveal">Revelar o primeiro teste</button>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 6 - Slide 6 -->
-    <section id="secao6" class="section final">
-        <div class="section-content">
-            <h2 class="titulo-secao">Capítulo 5 • O Legado</h2>
-            <h3 class="subtitulo-secao">E viveram... nas sombras</h3>
-            <p>Elara se tornou a nova guardiã de Eldoria. A lição ficou:</p>
-            
-            <ul class="bullets">
-                <li>A escuridão não é inimiga, é parte de nós</li>
-                <li>Coragem nasce quando enfrentamos nossos medos</li>
-                <li>Toda história merece um final épico</li>
-            </ul>
+    <!-- SEÇÃO 4 -->
+    <section id="secao4" class="section">
+        <div class="section-container">
+            <div class="chapter-header">
+                <span class="chapter-number">03</span>
+                <h2>A ALIANÇA</h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Nem todos os monstros são inimigos</p>
+                <ul class="bullet-list">
+                    <li>O Guardião das Sombras aparece</li>
+                    <li>Um dragão roxo oferece poder</li>
+                    <li>Um pacto que mudará tudo</li>
+                </ul>
+                <button onclick="revelarSegredo(4)" class="btn-reveal">Aceitar o pacto?</button>
+            </div>
+        </div>
+    </section>
 
-            <button onclick="revelarMistério(6)" class="btn-interativo final-btn">
-                Fim da Lenda ✨
-            </button>
-            <div id="mistério-6" class="mistério escondido final-mensagem">
-                Obrigado por acompanhar minha história! Agora é sua vez de criar a sua própria lenda. 🚀
+    <!-- SEÇÃO 5 - COM EFEITO ÉPICO -->
+    <section id="secao5" class="section">
+        <div class="section-container">
+            <div class="chapter-header">
+                <span class="chapter-number">04</span>
+                <h2>O CONFRONTO</h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">O momento que decide o destino de Eldoria</p>
+                <ul class="bullet-list">
+                    <li>Espada vermelha contra a Coroa das Trevas</li>
+                    <li>Um golpe que ecoa no tempo</li>
+                    <li>A sombra vira luz</li>
+                </ul>
+                
+                <!-- ESPADA INTERATIVA 3D -->
+                <div onclick="golpeFinal()" class="sword-container">
+                    <div id="sword" class="sword">⚔️</div>
+                    <p class="sword-label">CLIQUE PARA DESFERIR O GOLPE FINAL</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6 - FINAL COM CONFETTI -->
+    <section id="secao6" class="section final">
+        <div class="section-container">
+            <div class="chapter-header">
+                <span class="chapter-number">05</span>
+                <h2>O LEGADO</h2>
+            </div>
+            <div class="content-card">
+                <p class="lead">Elara se torna a nova guardiã</p>
+                <ul class="bullet-list">
+                    <li>A escuridão não é inimiga</li>
+                    <li>Coragem nasce do medo</li>
+                    <li>Toda lenda merece um fim épico</li>
+                </ul>
+                
+                <button onclick="finalizarLenda()" class="btn-final">
+                    COMPLETAR A LENDA ✨
+                </button>
+                <div id="mensagem-final" class="mensagem-final"></div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p>Feito com ❤️ e muito código por um estudante de programação • 2026</p>
+        <p>Feito com paixão e código por um estudante de programação • 2026</p>
+        <p class="credits">Design moderno • Animações profissionais • 100% responsivo</p>
     </footer>
 
     <script src="script.js"></script>
