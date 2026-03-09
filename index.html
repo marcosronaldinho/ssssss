@@ -6,15 +6,14 @@
     <meta name="description" content="A Lenda do Cavaleiro das Sombras - Apresentação interativa 2026">
     <title>SHADOWFORGE • A Lenda do Cavaleiro das Sombras</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts (modern + elegante) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- CANVAS DE PARTÍCULAS (fundo épico neon) -->
+    <!-- CANVAS DE PARTÍCULAS -->
     <canvas id="particles"></canvas>
 
-    <!-- HEADER - MENU ULTRA MODERNO -->
+    <!-- HEADER -->
     <header class="header">
         <div class="header-container">
             <div class="logo">
@@ -38,18 +37,24 @@
             </button>
         </div>
 
-        <!-- Menu mobile com glass effect -->
+        <!-- MENU MOBILE -->
         <nav id="nav-mobile" class="nav-mobile">
-            <ul></ul>
+            <ul class="nav-list-mobile">
+                <li><a href="#secao1">Início</a></li>
+                <li><a href="#secao2">O Chamado</a></li>
+                <li><a href="#secao3">Desafios</a></li>
+                <li><a href="#secao4">Aliança</a></li>
+                <li><a href="#secao5">Confronto</a></li>
+                <li><a href="#secao6">Legado</a></li>
+            </ul>
         </nav>
 
-        <!-- Progress bar de leitura -->
         <div class="progress-bar">
             <div id="progress" class="progress"></div>
         </div>
     </header>
 
-    <!-- HERO - SEÇÃO 1 -->
+    <!-- SEÇÃO 1 - HERO -->
     <section id="secao1" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -58,12 +63,8 @@
             <p class="hero-subtitle">Uma jornada de coragem, mistério e redenção</p>
             
             <div class="hero-buttons">
-                <button onclick="iniciarJornada()" class="btn-primary">
-                    INICIAR A LENDA
-                </button>
-                <button onclick="document.getElementById('secao2').scrollIntoView({behavior:'smooth'})" class="btn-secondary">
-                    Ver capítulos
-                </button>
+                <button onclick="iniciarJornada()" class="btn-primary">INICIAR A LENDA</button>
+                <button onclick="document.getElementById('secao2').scrollIntoView({behavior:'smooth'})" class="btn-secondary">Ver capítulos</button>
             </div>
 
             <div class="hero-stats">
@@ -72,18 +73,13 @@
                 <div>Tema: <span class="highlight">Luz na escuridão</span></div>
             </div>
         </div>
-
-        <!-- Espada flutuante hero -->
         <div class="hero-sword">🗡️</div>
     </section>
 
     <!-- SEÇÃO 2 -->
     <section id="secao2" class="section">
         <div class="section-container">
-            <div class="chapter-header">
-                <span class="chapter-number">01</span>
-                <h2>O CHAMADO</h2>
-            </div>
+            <div class="chapter-header"><span class="chapter-number">01</span><h2>O CHAMADO</h2></div>
             <div class="content-card">
                 <p class="lead">A noite em que o destino despertou...</p>
                 <ul class="bullet-list">
@@ -100,10 +96,7 @@
     <!-- SEÇÃO 3 -->
     <section id="secao3" class="section">
         <div class="section-container">
-            <div class="chapter-header">
-                <span class="chapter-number">02</span>
-                <h2>OS DESAFIOS</h2>
-            </div>
+            <div class="chapter-header"><span class="chapter-number">02</span><h2>OS DESAFIOS</h2></div>
             <div class="content-card">
                 <p class="lead">A Floresta Negra não perdoa os fracos</p>
                 <ul class="bullet-list">
@@ -119,10 +112,7 @@
     <!-- SEÇÃO 4 -->
     <section id="secao4" class="section">
         <div class="section-container">
-            <div class="chapter-header">
-                <span class="chapter-number">03</span>
-                <h2>A ALIANÇA</h2>
-            </div>
+            <div class="chapter-header"><span class="chapter-number">03</span><h2>A ALIANÇA</h2></div>
             <div class="content-card">
                 <p class="lead">Nem todos os monstros são inimigos</p>
                 <ul class="bullet-list">
@@ -135,13 +125,10 @@
         </div>
     </section>
 
-    <!-- SEÇÃO 5 - COM EFEITO ÉPICO -->
+    <!-- SEÇÃO 5 -->
     <section id="secao5" class="section">
         <div class="section-container">
-            <div class="chapter-header">
-                <span class="chapter-number">04</span>
-                <h2>O CONFRONTO</h2>
-            </div>
+            <div class="chapter-header"><span class="chapter-number">04</span><h2>O CONFRONTO</h2></div>
             <div class="content-card">
                 <p class="lead">O momento que decide o destino de Eldoria</p>
                 <ul class="bullet-list">
@@ -149,8 +136,6 @@
                     <li>Um golpe que ecoa no tempo</li>
                     <li>A sombra vira luz</li>
                 </ul>
-                
-                <!-- ESPADA INTERATIVA 3D -->
                 <div onclick="golpeFinal()" class="sword-container">
                     <div id="sword" class="sword">⚔️</div>
                     <p class="sword-label">CLIQUE PARA DESFERIR O GOLPE FINAL</p>
@@ -159,13 +144,10 @@
         </div>
     </section>
 
-    <!-- SEÇÃO 6 - FINAL COM CONFETTI -->
+    <!-- SEÇÃO 6 - FINAL -->
     <section id="secao6" class="section final">
         <div class="section-container">
-            <div class="chapter-header">
-                <span class="chapter-number">05</span>
-                <h2>O LEGADO</h2>
-            </div>
+            <div class="chapter-header"><span class="chapter-number">05</span><h2>O LEGADO</h2></div>
             <div class="content-card">
                 <p class="lead">Elara se torna a nova guardiã</p>
                 <ul class="bullet-list">
